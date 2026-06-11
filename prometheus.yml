@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+
+scrape_configs:
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["prometheus:9090"]
+
+  - job_name: "node-exporter"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+
+  - job_name: "jenkins"
+    metrics_path: /prometheus/
+    scrape_interval: 90s  # Scrape cycle ko 1.5 minutes kiya taaki system choke na ho
+    scrape_timeout: 60s   # Prometheus ko pure 1 minute tak bina tension wait karne ke liye allow kiya
+    scheme: http
+    static_configs:
+      - targets: ["192.168.0.71:8080"]
+
