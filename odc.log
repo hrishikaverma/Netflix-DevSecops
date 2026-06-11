@@ -1,0 +1,98 @@
+2026-06-11 16:35:36,269 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: odc.application.name='dependency-check-cli'
+2026-06-11 16:35:36,274 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: data.directory='/home/dell/dependency-check/data'
+2026-06-11 16:35:36,276 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.jar.enabled='true'
+2026-06-11 16:35:36,277 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: updater.versioncheck.enabled='true'
+2026-06-11 16:35:36,278 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.msbuildproject.enabled='true'
+2026-06-11 16:35:36,279 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.archive.enabled='true'
+2026-06-11 16:35:36,280 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.knownexploited.enabled='true'
+2026-06-11 16:35:36,280 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.python.distribution.enabled='true'
+2026-06-11 16:35:36,281 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.python.package.enabled='true'
+2026-06-11 16:35:36,281 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.autoconf.enabled='true'
+2026-06-11 16:35:36,282 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.maveninstall.enabled='true'
+2026-06-11 16:35:36,282 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.pe.enabled='true'
+2026-06-11 16:35:36,283 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.pip.enabled='true'
+2026-06-11 16:35:36,287 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.pipfile.enabled='true'
+2026-06-11 16:35:36,288 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.poetry.enabled='true'
+2026-06-11 16:35:36,288 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.cmake.enabled='true'
+2026-06-11 16:35:36,289 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.nuspec.enabled='true'
+2026-06-11 16:35:36,289 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.nugetconf.enabled='true'
+2026-06-11 16:35:36,290 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.assembly.enabled='true'
+2026-06-11 16:35:36,291 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.bundle.audit.enabled='true'
+2026-06-11 16:35:36,291 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.filename.enabled='true'
+2026-06-11 16:35:36,292 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.mix.audit.enabled='true'
+2026-06-11 16:35:36,292 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.openssl.enabled='true'
+2026-06-11 16:35:36,293 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.composer.lock.enabled='true'
+2026-06-11 16:35:36,293 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.cpanfile.enabled='true'
+2026-06-11 16:35:36,294 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.golang.dep.enabled='true'
+2026-06-11 16:35:36,294 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.golang.mod.enabled='true'
+2026-06-11 16:35:36,294 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.dart.enabled='true'
+2026-06-11 16:35:36,295 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.node.package.enabled='true'
+2026-06-11 16:35:36,295 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.node.audit.enabled='true'
+2026-06-11 16:35:36,296 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.yarn.audit.enabled='true'
+2026-06-11 16:35:36,296 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.pnpm.audit.enabled='true'
+2026-06-11 16:35:36,297 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.node.audit.use.cache='true'
+2026-06-11 16:35:36,297 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.retirejs.enabled='true'
+2026-06-11 16:35:36,298 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.swift.package.manager.enabled='true'
+2026-06-11 16:35:36,298 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.swift.package.resolved.enabled='true'
+2026-06-11 16:35:36,299 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.cocoapods.enabled='true'
+2026-06-11 16:35:36,299 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.carthage.enabled='true'
+2026-06-11 16:35:36,300 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.ruby.gemspec.enabled='true'
+2026-06-11 16:35:36,301 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.central.enabled='true'
+2026-06-11 16:35:36,301 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.central.use.cache='true'
+2026-06-11 16:35:36,301 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.ossindex.enabled='true'
+2026-06-11 16:35:36,302 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.ossindex.use.cache='true'
+2026-06-11 16:35:36,304 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: junit.fail.on.cvss='0.0'
+2026-06-11 16:35:36,305 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: analyzer.nexus.proxy='true'
+2026-06-11 16:35:36,306 org.owasp.dependencycheck.utils.Settings:1104
+DEBUG - Setting: hosted.suppressions.enabled='true'
+2026-06-11 16:35:36,592 org.owasp.dependencycheck.App:374
+DEBUG - Scanning /mnt/e/Sunbeam-Project/netflix-clone-react-typescript
+2026-06-11 16:35:36,609 org.owasp.dependencycheck.App:393
+DEBUG - BaseDir: /mnt/e/Sunbeam-Project/netflix-clone-react-typescript
+2026-06-11 16:35:36,610 org.owasp.dependencycheck.App:394
+DEBUG - Include: **/*
