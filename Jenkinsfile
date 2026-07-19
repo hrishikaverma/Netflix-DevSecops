@@ -36,14 +36,16 @@ pipeline {
         }
 
         stage('OWASP Dependency Check') {
-            steps {
-                bat '''
-                C:\\dependency-check\\dependency-check\\bin\\dependency-check.bat ^
-                --project "Netflix" ^
-                --scan . ^
-                --format HTML ^
-                --out reports
-                '''
+    steps {
+        bat '''
+        C:\\dependency-check\\dependency-check\\bin\\dependency-check.bat ^
+        --project "Netflix" ^
+        --scan package.json ^
+        --scan package-lock.json ^
+        --format HTML ^
+        --out reports ^
+        --disableAssembly
+        '''
             }
         }
 
