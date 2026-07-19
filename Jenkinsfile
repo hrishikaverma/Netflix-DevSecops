@@ -40,15 +40,14 @@ pipeline {
         bat '''
         C:\\dependency-check\\dependency-check\\bin\\dependency-check.bat ^
         --project "Netflix" ^
-        --scan package.json ^
-        --scan package-lock.json ^
+        --scan . ^
         --format HTML ^
         --out reports ^
-        --disableAssembly
+        --disableAssembly ^
+        --disableOssIndex
         '''
-            }
-        }
-
+    }
+}
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
