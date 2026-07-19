@@ -38,7 +38,7 @@ pipeline {
         stage('OWASP Dependency Check') {
             steps {
                 bat '''
-                C:\\dependency-check\\bin\\dependency-check.bat ^
+                C:\\dependency-check\\dependency-check\\bin\\dependency-check.bat ^
                 --project "Netflix" ^
                 --scan . ^
                 --format HTML ^
