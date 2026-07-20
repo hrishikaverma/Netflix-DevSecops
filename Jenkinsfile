@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     PATH = "/opt/node/bin:/usr/local/bin:/usr/bin:/bin"
     SONARQUBE_SCANNER_HOME = tool 'sonar-scanner'
@@ -161,7 +160,6 @@ post {
             allowEmptyArchive: true
     }
 }
-```
 
 }
 
