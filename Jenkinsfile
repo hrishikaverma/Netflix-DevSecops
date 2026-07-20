@@ -18,36 +18,37 @@ pipeline {
 
         stage('Node Version Check') {
             steps {
-                bat 'node -v'
-                bat 'npm -v'
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
         stage('Build Application') {
             steps {
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
 
         stage('OWASP Dependency Check') {
-    steps {
-        bat '''
-        C:\\dependency-check\\dependency-check\\bin\\dependency-check.bat ^
-        --project "Netflix" ^
-        --scan . ^
-        --format HTML ^
-        --out reports ^
-        --disableAssembly ^
-        --disableOssIndex
-        '''
-    }
-}
+            steps {
+                sh '''
+                    dependency-check.sh \
+                    --project "Netflix" \
+                    --scan . \
+                    --format HTML \
+                    --out reports \
+                    --disableAssembly \
+                    --disableOssIndex
+                '''
+            }
+        }
+
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
@@ -57,15 +58,14 @@ pipeline {
                             variable: 'SONAR_TOKEN'
                         )
                     ]) {
-
-                        bat """
-                        "%SONARQUBE_SCANNER_HOME%\\bin\\sonar-scanner.bat" ^
-                        -Dsonar.projectKey=netflix ^
-                        -Dsonar.projectName=Netflix ^
-                        -Dsonar.sources=. ^
-                        -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.token=%SONAR_TOKEN%
-                        """
+                        sh '''
+                            $SONARQUBE_SCANNER_HOME/bin/sonar-scanner \
+                            -Dsonar.projectKey=netflix \
+                            -Dsonar.projectName=Netflix \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=$SONAR_HOST_URL \
+                            -Dsonar.token=$SONAR_TOKEN
+                        '''
                     }
                 }
             }
@@ -81,42 +81,44 @@ pipeline {
 
         stage('Trivy Filesystem Scan') {
             steps {
-                bat '''
-                trivy fs . ^
-                --format json ^
-                --output reports\\trivy-fs.json
+                sh '''
+                    mkdir -p reports
+
+                    trivy fs . \
+                    --format json \
+                    --output reports/trivy-fs.json
                 '''
             }
         }
 
         stage('Docker Build') {
             steps {
-                bat '''
-                docker build ^
-                -t %IMAGE_NAME%:%IMAGE_TAG% ^
-                .
+                sh '''
+                    docker build \
+                    -t ${IMAGE_NAME}:${IMAGE_TAG} \
+                    .
                 '''
             }
         }
 
         stage('Trivy Image Scan') {
             steps {
-                bat '''
-                trivy image ^
-                --format json ^
-                --output reports\\trivy-image.json ^
-                %IMAGE_NAME%:%IMAGE_TAG%
+                sh '''
+                    trivy image \
+                    --format json \
+                    --output reports/trivy-image.json \
+                    ${IMAGE_NAME}:${IMAGE_TAG}
                 '''
             }
         }
 
         stage('Pre-Production Security Gate') {
             steps {
-                bat '''
-                trivy image ^
-                --severity CRITICAL ^
-                --exit-code 1 ^
-                %IMAGE_NAME%:%IMAGE_TAG%
+                sh '''
+                    trivy image \
+                    --severity CRITICAL \
+                    --exit-code 1 \
+                    ${IMAGE_NAME}:${IMAGE_TAG}
                 '''
             }
         }
