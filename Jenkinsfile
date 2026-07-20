@@ -37,20 +37,20 @@ stages {
     }
 
     stage('OWASP Dependency Check') {
-        steps {
-            sh '''
-                mkdir -p reports
+    steps {
+        sh '''
+            mkdir -p reports
 
-                dependency-check.sh \
-                --project "Netflix" \
-                --scan . \
-                --format HTML \
-                --out reports \
-                --disableAssembly \
-                --disableOssIndex
-            '''
-        }
+            /mnt/c/dependency-check/dependency-check/bin/dependency-check.sh \
+            --project "Netflix" \
+            --scan . \
+            --format HTML \
+            --out reports \
+            --disableAssembly \
+            --disableOssIndex
+        '''
     }
+}
 
     stage('SonarQube Analysis') {
         steps {
