@@ -148,7 +148,6 @@ stages {
 }
 
 post {
-
     success {
         echo 'SECURITY GATE PASSED - Pipeline completed successfully'
     }
