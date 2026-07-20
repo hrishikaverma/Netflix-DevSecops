@@ -2,10 +2,17 @@ pipeline {
     agent any
 
     environment {
+
         SONARQUBE_SCANNER_HOME = tool 'sonar-scanner'
         IMAGE_NAME = 'netflix-clone'
         IMAGE_TAG = 'security-gate'
     }
+    PATH = "/opt/node/bin:/usr/local/bin:/usr/bin:/bin"
+    SONARQUBE_SCANNER_HOME = tool 'sonar-scanner'
+    IMAGE_NAME = 'netflix-clone'
+    IMAGE_TAG = 'security-gate'
+}
+
 
     stages {
 
