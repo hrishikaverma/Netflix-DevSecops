@@ -9,7 +9,7 @@ environment {
     SONARQUBE_SCANNER_HOME = tool 'sonar-scanner'
 
 
-    AI_SECURITY_IMAGE = 'hrishika1/ai-security-risk:latest'
+    AI_SECURITY_IMAGE = 'hrishika1/ai-security-risk:v19'
     AI_SECURITY_CONTAINER = 'ai-security-api'
 
 }
