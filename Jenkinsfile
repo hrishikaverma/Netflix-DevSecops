@@ -8,14 +8,11 @@ environment {
 
     SONARQUBE_SCANNER_HOME = tool 'sonar-scanner'
 
-    IMAGE_NAME = 'ai-security-risk'
-    IMAGE_TAG = 'v18'
 
     AI_SECURITY_IMAGE = 'hrishika1/ai-security-risk:latest'
     AI_SECURITY_CONTAINER = 'ai-security-api'
 
 }
-
 
 stages {
 
@@ -143,94 +140,78 @@ stages {
         }
 
     }
+      
+      stage('Trivy Filesystem Scan') {
 
+    steps {
 
+        sh '''
 
+        mkdir -p reports
 
-    stage('Trivy Filesystem Scan') {
+        trivy fs . \
+        --scanners vuln \
+        --format json \
+        --output reports/trivy-fs.json
 
-        steps {
-
-            sh '''
-
-            mkdir -p reports
-
-            trivy fs . \
-            --scanners vuln \
-            --format json \
-            --output reports/trivy-fs.json
-
-            '''
-
-        }
+        '''
 
     }
 
-
-
-
-
-    stage('Docker Build') {
-
-        steps {
-
-            sh '''
-
-            docker build \
-            -t ${IMAGE_NAME}:${IMAGE_TAG} \
-            .
-
-            '''
-
-        }
-
-    }
-
+}
 
 
 
 
     stage('Trivy Image Scan') {
 
-        steps {
+    steps {
 
-            sh '''
+        sh '''
 
-            mkdir -p reports
+        mkdir -p reports
 
-            trivy image \
-            --scanners vuln \
-            --format json \
-            --output reports/trivy-image.json \
-            ${IMAGE_NAME}:${IMAGE_TAG}
+        docker pull ${AI_SECURITY_IMAGE}
 
-            '''
 
-        }
+        trivy image \
+        --scanners vuln \
+        --format json \
+        --output reports/trivy-image.json \
+        ${AI_SECURITY_IMAGE}
+
+        '''
+
+    }
+
+}
+        
+
+
+
+
+     stage('Pre-Production Security Gate') {
+
+       steps {
+
+        sh '''
+
+        trivy image \
+        --scanners vuln \
+        --severity HIGH,CRITICAL \
+        --exit-code 1 \
+        ${AI_SECURITY_IMAGE}
+
+        '''
 
     }
 
+}
 
 
 
 
-    stage('Pre-Production Security Gate') {
-
-        steps {
-
-            sh '''
-
-            trivy image \
-            --scanners vuln \
-            --severity HIGH,CRITICAL \
-            --exit-code 1 \
-            ${IMAGE_NAME}:${IMAGE_TAG}
-
-            '''
-
-        }
-
-    }
+    
 
 
 
@@ -240,57 +221,52 @@ stages {
 
     stage('AI Security Risk Predictor Deployment') {
 
-        steps {
+steps {
 
-            sh '''
+sh '''
 
-            echo "Starting AI Security Risk Predictor"
-
-
-            docker pull ${AI_SECURITY_IMAGE}
+echo "Deploying AI Security Risk Predictor"
 
 
-            docker rm -f ${AI_SECURITY_CONTAINER} || true
+docker pull ${AI_SECURITY_IMAGE}
 
 
-
-            docker run -d \
-            --name ${AI_SECURITY_CONTAINER} \
-            -p 8000:8000 \
-            ${AI_SECURITY_IMAGE}
+docker rm -f ${AI_SECURITY_CONTAINER} || true
 
 
-
-            sleep 10
-
-
-
-            curl -f http://localhost:8000
+docker run -d \
+--name ${AI_SECURITY_CONTAINER} \
+-p 8000:8000 \
+${AI_SECURITY_IMAGE}
 
 
+sleep 10
 
-            echo "AI Security API Health Check Passed"
+
+curl -f http://localhost:8000
 
 
-            '''
+echo "AI Security API Running Successfully"
 
-        }
+'''
 
-    }
+}
+
+}
 
 
 
 
 
-    stage('Docker Push') {
+    stage('Docker Registry Validation') {
 
-        steps {
+steps {
 
-            echo 'Docker image is security approved'
+echo 'Docker image already available on DockerHub'
 
-        }
+}
 
-    }
+}
 
 
 
@@ -344,26 +320,9 @@ echo 'SECURITY GATE FAILED - Deployment blocked'
 
 }
 
-
-
 always {
 
-
-sh '''
-
-docker rm -f ai-security-api || true
-
-'''
-
-
-archiveArtifacts artifacts:'reports/**/*',
-allowEmptyArchive:true
-
-
-}
-
-
-}
-
+    archiveArtifacts artifacts:'reports/**/*',
+    allowEmptyArchive:true
 
 }
