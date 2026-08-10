@@ -894,59 +894,10 @@ minikube service netflix-app
 
 ---
 
-# 📸 Screenshots
 
-Add project screenshots in this section.
 
-### 🏠 Netflix Application
 
-```text
-screenshots/netflix-home.png
 ```
-
-### 🔄 Jenkins Pipeline
-
-```text
-screenshots/jenkins-pipeline.png
-```
-
-### 🔍 SonarQube Analysis
-
-```text
-screenshots/sonarqube.png
-```
-
-### 🛡️ Trivy Scan
-
-```text
-screenshots/trivy-scan.png
-```
-
-### 🤖 AI Security Prediction
-
-```text
-screenshots/ai-security.png
-```
-
-### ☸️ Kubernetes Deployment
-
-```text
-screenshots/kubernetes.png
-```
-
-### 📊 Grafana Dashboard
-
-```text
-screenshots/grafana.png
-```
-
-### 📈 Prometheus
-
-```text
-screenshots/prometheus.png
-```
-
-> Recommended: create a `screenshots/` directory in your repository and place the actual images there.
 
 ---
 
@@ -1056,16 +1007,7 @@ Overall, this project demonstrates a practical implementation of a modern **AI-a
 
 ---
 
-# 👩‍💻 Contributors
 
-**Project Team**
-
-* Contributor 1
-* Contributor 2
-* Contributor 3
-* Contributor 4
-
----
 
 # ⭐ Project Highlights
 
