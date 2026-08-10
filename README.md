@@ -1,95 +1,248 @@
-<div align="center">
-  <a href="http://netflix-clone-with-tmdb-using-react-mui.vercel.app/">
-    <img src="./public/assets/netflix-logo.png" alt="Logo" width="100" height="32">
-  </a>
+🎬 Netflix Clone — AI-Driven DevSecOps Pipeline
 
-  <h3 align="center">Netflix Clone</h3>
+A production-oriented Netflix Clone project demonstrating how DevOps, DevSecOps, Cloud-Native technologies, and AI-based security risk prediction can be integrated into a complete software delivery pipeline.
 
-  <p align="center">
-    <a href="https://netflix-clone-react-typescript.vercel.app/">View Demo</a>
-    ·
-    <a href="https://github.com/crazy-man22/netflix-clone-react-typescript/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/crazy-man22/netflix-clone-react-typescript/issues">Request Feature</a>
-  </p>
-</div>
+The project focuses on automating the journey from source code → build → security analysis → containerization → deployment → monitoring, with security checks integrated before production deployment.
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#prerequests">Prerequests</a>
-    </li>
-    <li>
-      <a href="#which-features-this-project-deals-with">Which features this project deals with</a>
-    </li>
-    <li><a href="#third-party-libraries-used-except-for-react-and-rtk">Third Party libraries used except for React and RTK</a></li>
-    <li>
-      <a href="#contact">Contact</a>
-    </li>
-  </ol>
-</details>
+🚀 Project Highlights
 
-<br />
+⚙️ Automated CI/CD pipeline using Jenkins
 
-<div align="center">
-  <img src="./public/assets/home-page.png" alt="Logo" width="100%" height="100%">
-  <p align="center">Home Page</p>
-  <img src="./public/assets/mini-portal.png" alt="Logo" width="100%" height="100%">
-  <p align="center">Mini Portal</p>
-  <img src="./public/assets/detail-modal.png" alt="Logo" width="100%" height="100%">
-  <p align="center">Detail Modal</p>
-  <img src="./public/assets/grid-genre.png" alt="Logo" width="100%" height="100%">
-  <p align="center">Grid Genre Page</p>
-  <img src="./public/assets/watch.png" alt="Logo" width="100%" height="100%">
-  <p align="center">Watch Page with customer contol bar</p>
-</div>
+🔐 DevSecOps security gates integrated into the pipeline
 
-## Prerequests
+🔎 Static Code Analysis with SonarQube
 
-- Create an account if you don't have on [TMDB](https://www.themoviedb.org/).
-  Because I use its free API to consume movie/tv data.
-- And then follow the [documentation](https://developers.themoviedb.org/3/getting-started/introduction) to create API Key
-- Finally, if you use v3 of TMDB API, create a file named `.env`, and copy and paste the content of `.env.example`.
-  And then paste the API Key you just created.
+🛡️ Dependency vulnerability scanning using OWASP Dependency-Check
 
-## Which features this project deal with
+🐳 Container vulnerability scanning using Trivy
 
-- How to create and use [Custom Hooks](https://reactjs.org/docs/hooks-custom.html)
-- How to use [Context](https://reactjs.org/docs/context.html) and its provider
-- How to use lazy and Suspense for [Code-Splitting](https://reactjs.org/docs/code-splitting.html)
-- How to use a new [lazy](https://reactrouter.com/en/main/route/lazy) feature of react-router to reduce bundle size.
-- How to use data [loader](https://reactrouter.com/en/main/route/loader) of react-router, and how to use redux dispatch in the loader to fetch data before rendering component.
-- How to use [Portal](https://reactjs.org/docs/portals.html)
-- How to use [Fowarding Refs](https://reactjs.org/docs/forwarding-refs.html) to make components reusuable
-- How to create and use [HOC](https://reactjs.org/docs/higher-order-components.html)
-- How to customize default theme of [MUI](https://mui.com/)
-- How to use [RTK](https://redux-toolkit.js.org/introduction/getting-started)
-- How to use [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
-- How to customize default classname of [MUI](https://mui.com/material-ui/experimental-api/classname-generator)
-- Infinite Scrolling(using [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API))
-- How to make awesome carousel using [slick-carousel](https://react-slick.neostack.com)
+📦 Docker image build and registry workflow
 
-## Third Party libraries used except for React and RTK
+☸️ Application deployment on Kubernetes / Minikube
 
-- [react-router-dom@v6.9](https://reactrouter.com/en/main)
-- [MUI(Material UI)](https://mui.com/)
-- [framer-motion](https://www.framer.com/docs/)
-- [video.js](https://videojs.com)
-- [react-slick](https://react-slick.neostack.com/)
+📊 Monitoring with Prometheus + Grafana + Node Exporter
 
-## Install with Docker
+🤖 AI-based Security Risk Prediction using Machine Learning
 
-```sh
-docker build --build-arg TMDB_V3_API_KEY=your_api_key_here -t netflix-clone .
+🔏 Container image signing and verification using Cosign
 
-docker run --name netflix-clone-website --rm -d -p 80:80 netflix-clone
-```
+🏗️ Architecture
 
-## Todo
+Developer
+   │
+   ▼
+GitHub Repository
+   │
+   ▼
+Jenkins CI/CD
+   │
+   ├── Build & Test
+   │
+   ├── SonarQube ──────────► SAST / Code Quality
+   │
+   ├── OWASP Dependency Check ► Dependency Security
+   │
+   ├── Trivy ──────────────► Container / FS Vulnerability Scan
+   │
+   ├── AI Security Risk Model ► Risk Prediction
+   │
+   ▼
+Pre-Production Security Gate
+   │
+   ├── PASS ──► Docker Build
+   │              │
+   │              ▼
+   │         Docker Registry
+   │              │
+   │              ▼
+   │         Kubernetes
+   │
+   └── FAIL ──► Deployment Blocked
 
-- Make the animation of video card portal more similar to Netflix.
-- Improve performance. I am using `context` and `provider` but all components subscribed to the context's value are re-rendered. These re-renders happen even if the part of the value is not used in render of the component. there are [several ways](https://blog.axlight.com/posts/4-options-to-prevent-extra-rerenders-with-react-context/) to prevent the re-renders from these behaviours. In addition to them, there may be several performance issues.
-- Replace bundler([Vite](https://vitejs.dev/guide)) with [Turbopack](https://turbo.build/pack/docs/why-turbopack). Turbopack is introduced in Next.js conf recently. It's very fast but it's nor ready to use right now. it just support Next.js, and they plan to support all others as soon as possible. so if it's ready to use, replace [Vite](https://vitejs.dev/guide) with [Turbopack](https://turbo.build/pack/docs/why-turbopack).
-- Add accessibilities for better UX.
-- Add Tests.
+Kubernetes / Application
+          │
+          ▼
+Prometheus ──► Grafana
+          │
+          └──► Infrastructure & Application Monitoring
+
+🧰 Technology Stack
+
+Category
+
+Technologies
+
+Frontend
+
+React, TypeScript, Vite
+
+Version Control
+
+Git, GitHub
+
+CI/CD
+
+Jenkins
+
+Code Quality & SAST
+
+SonarQube
+
+Dependency Security
+
+OWASP Dependency-Check
+
+Container Security
+
+Trivy
+
+Containerization
+
+Docker
+
+Orchestration
+
+Kubernetes, Minikube
+
+Monitoring
+
+Prometheus, Grafana, Node Exporter
+
+AI / ML
+
+Python, Scikit-learn, Pandas, Joblib
+
+ML Tracking
+
+MLflow
+
+Image Security
+
+Cosign
+
+Automation / Infra
+
+Terraform, Ansible
+
+🤖 AI Security Risk Prediction
+
+The project includes an AI-based security module that predicts application security risk from security and code-quality metrics.
+
+Input Features
+
+Critical vulnerabilities
+
+High / Medium / Low vulnerabilities
+
+SonarQube bugs
+
+Code smells
+
+Code coverage
+
+Output
+
+The trained Machine Learning model predicts the overall security risk level, which can be used as an additional decision-support layer in the DevSecOps workflow.
+
+The AI module is implemented using:
+
+Python
+ ├── FastAPI
+ ├── Scikit-learn
+ ├── Pandas
+ ├── Joblib
+ └── MLflow
+
+🔒 Security Pipeline
+
+Security is treated as a continuous part of CI/CD, rather than a final-stage activity.
+
+Pipeline flow:
+
+Code Commit
+   ↓
+Jenkins Build
+   ↓
+SonarQube Analysis
+   ↓
+OWASP Dependency Check
+   ↓
+AI Security Risk Prediction
+   ↓
+Trivy Scan
+   ↓
+Security Gate
+   ↓
+Docker Build
+   ↓
+Image Signing
+   ↓
+Registry
+   ↓
+Kubernetes Deployment
+
+If the defined security conditions are not satisfied, the pre-production security gate can stop the deployment.
+
+📊 Monitoring
+
+The deployed application and infrastructure are monitored using:
+
+Prometheus — metrics collection
+
+Grafana — visualization and dashboards
+
+Node Exporter — host-level system metrics
+
+Monitoring helps track CPU, memory, system load, and Kubernetes/application-related metrics.
+
+🐳 Docker & Kubernetes
+
+The application is containerized using Docker and deployed using Kubernetes.
+
+Docker Image
+     ↓
+Container Registry
+     ↓
+Kubernetes Deployment
+     ↓
+Kubernetes Service
+     ↓
+Netflix Clone Application
+
+The application can be tested locally using Minikube.
+
+🎯 Key DevSecOps Practices Demonstrated
+
+Shift-left security
+
+Automated CI/CD
+
+Continuous code quality analysis
+
+Dependency vulnerability management
+
+Container security scanning
+
+Security-based deployment gates
+
+Container image signing
+
+Kubernetes-based deployment
+
+Continuous monitoring
+
+AI-assisted security risk assessment
+
+📌 Project Outcome
+
+This project demonstrates an end-to-end approach to building a secure, automated, monitored, and cloud-native application delivery workflow.
+
+Instead of treating security as a separate activity, the project integrates security checks directly into the CI/CD pipeline, while the AI module provides an additional layer of security risk assessment.
+
+👩‍💻 Project Focus
+
+Domain: DevOps | DevSecOps | Cloud-Native | AI/ML | Application Security
+
+Core Objective:
+
+Build and deploy a Netflix-style application through an automated DevSecOps pipeline with integrated security scanning, AI-based risk prediction, Kubernetes deployment, and continuous monitoring.
